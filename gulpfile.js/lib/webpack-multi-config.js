@@ -11,9 +11,9 @@ var node_modules = path.resolve('./', 'node_modules');
 var Promise = require('es6-promise').Promise;
 
 var deps = [
-    'react/dist/react.min.js',
-    'react-router/dist/react-router.min.js',
-    'react-dom/dist/react-dom.min.js'
+    'react/dist/react.min.js'
+    //'react-router/dist/react-router.min.js',
+    //'react-dom/dist/react-dom.min.js'
 ];
 
 
@@ -22,7 +22,7 @@ module.exports = function (env) {
     var jsDest = path.resolve(config.root.dest, config.tasks.js.dest)
     var publicPath = path.join(config.tasks.js.dest, '/')
     var filenamePattern = env === 'production' ? '[name]-[chunkhash].js' : '[name].js';
-    var cssFileName = env === 'production'  ? '[name]-[chunkhash].css' : '[name].css';
+    var cssFileName = env === 'production' ? '[name]-[chunkhash].css' : '[name].css';
     var pkg = require(path.resolve('./', 'package.json'));
 
 
@@ -35,7 +35,9 @@ module.exports = function (env) {
         plugins: [],
         resolve: {
             root: jsSrc,
-            alias: [],
+            alias: {
+
+            },
             extensions: [''].concat(extensions)
         },
         module: {
@@ -63,13 +65,13 @@ module.exports = function (env) {
                     test: /\.scss$/,
                     loaders: ['style', 'css', 'sass']
                 },
-                { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/font-woff' },
-                { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/font-woff' },
-                { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/octet-stream' },
-                { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },
-                { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=image/svg+xml' },
-                { test: /\.(png|jpg|jpeg|gif)(\?v=\d+\.\d+\.\d+)?$/i, loader: 'url?limit=10000' },
-                { test: /\.json$/, loader: 'json' }
+                {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/font-woff'},
+                {test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/font-woff'},
+                {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/octet-stream'},
+                {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
+                {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=image/svg+xml'},
+                {test: /\.(png|jpg|jpeg|gif)(\?v=\d+\.\d+\.\d+)?$/i, loader: 'url?limit=10000'},
+                {test: /\.json$/, loader: 'json'}
 
             ],
             noParse: []
@@ -144,9 +146,11 @@ module.exports = function (env) {
         // console.log('node_modules======='+node_modules);
         //console.log('depPath     ======='+depPath);
 
-        webpackConfig.resolve.alias[dep.split(path.sep)[0]] = depPath;
+    //    webpackConfig.resolve.alias[dep.split(path.sep)[0]] = depPath;
+
         webpackConfig.module.noParse.push(depPath);
     });
+
 
     return webpackConfig
 }
