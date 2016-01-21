@@ -12,10 +12,10 @@
     },
 
     "js": {
-      "src": "containers",
+      "src": "./",
       "dest": "js",
       "entries":{
-        "app": "App.js",
+        "app": "index.js",
         "react": ["react", "react-dom"]
       },
       "extractSharedJs": true,
@@ -35,7 +35,7 @@
     },
 
     "html": {
-      "src": "html",
+      "src": "./",
       "dest": "./",
       "htmlmin": {
         "collapseWhitespace": true

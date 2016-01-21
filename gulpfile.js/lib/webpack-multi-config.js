@@ -107,7 +107,7 @@ module.exports = function (env) {
 
         webpackConfig.plugins.push(new HtmlWebpackPlugin({
             title: pkg.name,
-            template: 'src/html/index.html', // Load a custom template
+            template: 'src/index.html', // Load a custom template
             inject: 'body' // Inject all scripts into the body
         }));
 

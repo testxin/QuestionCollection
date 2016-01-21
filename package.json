@@ -1,7 +1,7 @@
 {
-  "name": "QuestionCollection ",
+  "name": "QuestionCollection",
   "version": "0.0.1",
-  "description": "题集",
+  "description": "前端工程师体系题集",
   "engines": {
     "node": "0.12.2",
     "npm": "2.7.4"
@@ -19,8 +19,7 @@
     "test": "gulp production && karma start --single-run"
   },
   "dependencies": {
-    "babel-runtime": "^6.3.19",
-    "readable-stream": "^2.0.5"
+    "babel-runtime": "^6.3.19"
   },
   "devDependencies": {
     "babel-core": "^6.4.0",
@@ -72,6 +71,7 @@
     "karma-sinon-chai": "^1.0.0",
     "karma-webpack": "1.7.0",
     "lodash": "^3.10.1",
+    "material-ui": "^0.14.2",
     "merge-stream": "^0.1.8",
     "mocha": "^2.2.5",
     "morgan": "^1.6.1",
@@ -83,6 +83,7 @@
     "react-dom": "^0.14.5",
     "react-redux": "^4.0.6",
     "react-router": "^1.0.3",
+    "react-tap-event-plugin": "^0.2.1",
     "redux": "^3.0.5",
     "redux-devtools": "^3.0.1",
     "require-dir": "^0.3.0",

@@ -16,9 +16,13 @@ export default class questionTitle extends Component {
         }
     }
 
+    handleClick(e) {
+        this.setState({ clicked: 'true' })
+    }
+
     render() {
         return (
-            <div className={classNames('question_title')}>
+            <div onClick={this.handleClick.bind(this)} className={classNames('question_title')}>
                 <strong>{this.state.title}</strong><Pagination  />
             </div>
         )
