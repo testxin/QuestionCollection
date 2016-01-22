@@ -8,7 +8,8 @@ import React, { Component, PropTypes } from 'react';
 import Pagination from '../pagination.jsx';
 import classNames from 'classnames';
 
-export default class questionTitle extends Component {
+
+class QuestionTitle extends Component {
     constructor(props, context) {
         super(props, context)
         this.state = {
@@ -17,7 +18,9 @@ export default class questionTitle extends Component {
     }
 
     handleClick(e) {
-        this.setState({ clicked: 'true' })
+        console.log('handleClick...........');
+        this.props.onSave('handleClick')
+        // this.setState({ clicked: 'true' })
     }
 
     render() {
@@ -28,4 +31,13 @@ export default class questionTitle extends Component {
         )
     }
 
+
+
 }
+
+QuestionTitle.propTypes = {
+    onClick: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired
+}
+
+export default QuestionTitle

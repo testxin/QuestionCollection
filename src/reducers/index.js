@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import cliclAction from './testClick'
+import clickAction from './testClick'
 
 const rootReducer = combineReducers({
-  cliclAction
+  clickAction
 });
 
 export default rootReducer
