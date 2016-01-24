@@ -9,12 +9,16 @@ import { connect } from 'react-redux'
 import classNames from 'classnames';
 import Header from '../components/header/index.jsx';
 import QuestionTitle from '../components/question/title.jsx';
-import * as TodoActions from '../actions/sortList'
+import {testClick} from '../actions/sortList'
 
 
 export default class App extends Component {
     render() {
-        const { todos, actions } = this.props;
+        //const {  actions } = this.props;
+        const { testClick } = this.props;
+
+        //const actions = bindActionCreators(TodoActions, dispatch);
+
         return (
             <div className={classNames('container-full')}>
                 <Header />
@@ -26,15 +30,16 @@ export default class App extends Component {
 
 
 function mapStateToProps(state) {
-    console.log('state===='+JSON.stringify(state));
+    console.log('state====' + JSON.stringify(state));
     return {
-        todos: state.todos
+        testClick: state.testClick
     }
 }
 
 function mapDispatchToProps(dispatch) {
+
     return {
-        actions: bindActionCreators(TodoActions, dispatch)
+        actions: bindActionCreators(testClick, dispatch)
     }
 }
 

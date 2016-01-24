@@ -9,7 +9,7 @@ const initialState = [
     }
 ]
 
-export default function todos(state = initialState, action) {
+export default function testClick(state = initialState, action) {
     switch (action.type) {
         case CLICK_TITLE:
             console.log('所以会出到这里来...........')

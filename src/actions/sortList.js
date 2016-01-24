@@ -7,7 +7,7 @@
 
 import * as types from '../constants/ActionTypes'
 
-export function clickTitle() {
+export function testClick() {
     return {type: types.CLICK_TITLE}
 }
 

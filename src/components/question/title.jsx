@@ -17,27 +17,34 @@ class QuestionTitle extends Component {
         }
     }
 
-    handleClick(e) {
-        console.log('handleClick...........');
-        this.props.onSave('handleClick')
-        // this.setState({ clicked: 'true' })
-    }
+    /* handleClick(e) {
+     console.log('handleClick...........');
+     this.props.onSave('handleClick')
+     // this.setState({ clicked: 'true' })
+     }*/
 
     render() {
+        const { testClick} = this.props;
+
         return (
-            <div onClick={this.handleClick.bind(this)} className={classNames('question_title')}>
+            <div ref='myText' onClick={(e) => this.handleClick(e)} className={classNames('question_title')}>
                 <strong>{this.state.title}</strong><Pagination  />
             </div>
         )
     }
 
 
+    handleClick(e) {
+        const node = this.refs.myText;
+        const text = node.innerText.trim();
+        console.log('testClick========text=====' + text);
+        this.state.testClick(text);
+    }
 
 }
 
 QuestionTitle.propTypes = {
-    onClick: PropTypes.func.isRequired,
-    title: PropTypes.string.isRequired
-}
+    testClick: PropTypes.func.isRequired
+};
 
 export default QuestionTitle
