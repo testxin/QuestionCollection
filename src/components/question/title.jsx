@@ -38,13 +38,13 @@ class QuestionTitle extends Component {
         const node = this.refs.myText;
         const text = node.innerText.trim();
         console.log('testClick========text=====' + text);
-        this.state.testClick(text);
+        this.props.onAddClick(text);
     }
 
 }
 
 QuestionTitle.propTypes = {
-    testClick: PropTypes.func.isRequired
+    onAddClick: PropTypes.func.isRequired
 };
 
 export default QuestionTitle

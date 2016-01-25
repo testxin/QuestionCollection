@@ -1,49 +1,40 @@
-/**
- * Created by xinsw on 2016/1/20.
- */
-
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import React,{Component,PropTypes}from 'react';
 import ReactDom from 'react-dom';
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
 import classNames from 'classnames';
 import Header from '../components/header/index.jsx';
 import QuestionTitle from '../components/question/title.jsx';
-import {testClick} from '../actions/sortList'
+import * as Actions from '../actions/sortList';
 
 
 export default class App extends Component {
     render() {
-        //const {  actions } = this.props;
         const { testClick } = this.props;
-
-        //const actions = bindActionCreators(TodoActions, dispatch);
-
+        console.log('testClick=='+testClick)
         return (
             <div className={classNames('container-full')}>
                 <Header />
-                <QuestionTitle />
+                <QuestionTitle onAddClick={text=>testClick(text)} />
             </div>
         )
     }
 }
 
 
+
+App.propTypes = {
+    testClick: PropTypes.func.isRequired
+}
+
 function mapStateToProps(state) {
-    console.log('state====' + JSON.stringify(state));
     return {
         testClick: state.testClick
-    }
+    };
 }
 
 function mapDispatchToProps(dispatch) {
-
-    return {
-        actions: bindActionCreators(testClick, dispatch)
-    }
+    return bindActionCreators(Actions, dispatch);
 }
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App);

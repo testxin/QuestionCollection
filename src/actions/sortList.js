@@ -8,6 +8,7 @@
 import * as types from '../constants/ActionTypes'
 
 export function testClick() {
+    console.log('testClick======init......');
     return {type: types.CLICK_TITLE}
 }
 

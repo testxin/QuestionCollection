@@ -1,18 +1,22 @@
 import { createStore, applyMiddleware, combineReducers,compose} from 'redux'
 import { reduxReactRouter} from 'redux-router'
-import thunkMiddleware from 'redux-thunk'
-import loggerMiddleware from 'redux-logger'
+import thunk from 'redux-thunk'
+import promise from 'redux-promise';
+import createLogger from 'redux-logger';
 import { default as createHistory } from 'history/lib/createBrowserHistory';
 import rootReducer from '../reducers'
 import routers from '../routers'
 
+const logger = createLogger();
 
 const createStoreWithMiddleware = compose(
     applyMiddleware(
         //  promiseMiddleware,
-        thunkMiddleware,
+        thunk,
+        logger,
+        promise
 //   apiMiddleware,
-        loggerMiddleware
+        // loggerMiddleware
     ),
     reduxReactRouter({
         routers,

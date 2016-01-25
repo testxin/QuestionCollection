@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux'
-import testClick from './testClick'
+import { combineReducers } from 'redux';
+import testClick from './testClick';
 
 const rootReducer = combineReducers({
   testClick
 });
 
-export default rootReducer
+export default rootReducer;
