@@ -18,6 +18,10 @@
         "app": "index.js",
         "react": ["react", "react-dom"]
       },
+      "entries_dev":{
+        "app": "index.dev.js",
+        "react": ["react", "react-dom"]
+      },
       "extractSharedJs": true,
       "extensions": ["js"]
     },

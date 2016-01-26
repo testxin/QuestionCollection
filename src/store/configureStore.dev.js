@@ -7,6 +7,8 @@ import { default as createHistory } from 'history/lib/createBrowserHistory';
 import rootReducer from '../reducers'
 import routers from '../routers'
 import DevTools from '../containers/DevTools';
+import { persistState } from 'redux-devtools';
+
 
 
 const logger = createLogger();
@@ -24,10 +26,19 @@ const createStoreWithMiddleware = compose(
         routers,
         createHistory
     }),
-    DevTools.instrument()
+    DevTools.instrument(),
+    persistState(getDebugSessionKey())
 //, devTools()
 )
 (createStore);
+
+
+function getDebugSessionKey() {
+    // You can write custom logic here!
+    // By default we try to read the key from ?debug_session=<key> in the address bar
+    const matches = window.location.href.match(/[?&]debug_session=([^&]+)\b/);
+    return (matches && matches.length > 0)? matches[1] : null;
+}
 
 export default function configureStore(initialState) {
     const store = createStoreWithMiddleware(rootReducer, initialState);

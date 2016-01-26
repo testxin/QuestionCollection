@@ -80,7 +80,7 @@ module.exports = function (env) {
 
     if (env !== 'test') {
         // Karma doesn't need entry points or output settings
-        webpackConfig.entry = config.tasks.js.entries
+        webpackConfig.entry = config.tasks.js.entries_dev;
 
         /*
          app: [
@@ -127,6 +127,7 @@ module.exports = function (env) {
     }
 
     if (env === 'production') {
+        webpackConfig.entry = config.tasks.js.entries;
         webpackConfig.plugins.push(
             new webpackManifest(publicPath, config.root.dest),
             new webpack.DefinePlugin({

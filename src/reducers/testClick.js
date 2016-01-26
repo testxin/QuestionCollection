@@ -12,7 +12,6 @@ const initialState = [
 export default function testClick(state = initialState, action) {
     switch (action.type) {
         case CLICK_TITLE:
-            console.log('所以会出到这里来...........')
             return [
                 {
                     id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,

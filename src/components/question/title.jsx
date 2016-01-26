@@ -24,7 +24,7 @@ class QuestionTitle extends Component {
      }*/
 
     render() {
-        const { testClick} = this.props;
+      //  const { testClick} = this.props;
 
         return (
             <div ref='myText' onClick={(e) => this.handleClick(e)} className={classNames('question_title')}>
@@ -37,7 +37,6 @@ class QuestionTitle extends Component {
     handleClick(e) {
         const node = this.refs.myText;
         const text = node.innerText.trim();
-        console.log('testClick========text=====' + text);
         this.props.onAddClick(text);
     }
 

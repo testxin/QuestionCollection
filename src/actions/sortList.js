@@ -7,6 +7,11 @@
 
 import * as types from '../constants/ActionTypes'
 
+export function toggleLeftNav() {
+    console.log('toggleLeftNav======SHOW_LEFT_NAV......');
+    return {type: types.SHOW_LEFT_NAV}
+}
+
 export function testClick() {
     console.log('testClick======init......');
     return {type: types.CLICK_TITLE}
