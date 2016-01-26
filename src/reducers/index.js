@@ -3,7 +3,7 @@ import testClick from './testClick';
 import toggleHeader from './toggleHeader';
 
 const rootReducer = combineReducers({
-  testClick,
+ // testClick
   toggleHeader
 });
 
