@@ -11,9 +11,7 @@ const initialState = {
 export default function testClick(state = initialState, action) {
     switch (action.type) {
         case SHOW_LEFT_NAV:
-            state.open=state.open ? false : true;
-            state.text= 'Toggle ... LEFT_NAV';
-            return state;
+            return Object.assign({}, state, {open: !state.open});
         default:
             return state
     }

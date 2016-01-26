@@ -26,13 +26,15 @@ export default class App extends Component {
 
     render() {
 
-        const { testClick,toggleLeftNav} = this.props;
+        const { testClick,toggleLeftNav,toggleHeader} = this.props;
+
+        console.log('toggleHeader=======' + toggleHeader);
 
         return (
             <div className={classNames('container-full')}>
                 <Header clickMenuIcon={toggleLeftNav} title={"题集"}/>
                 <QuestionTitle onAddClick={text=>testClick(text)}/>
-                <LeftNav open={this.state.toggleHeader.open}>
+                <LeftNav open={toggleHeader.open}>
                     <MenuItem>Menu Item</MenuItem>
                     <MenuItem>Menu Item 2</MenuItem>
                 </LeftNav>
@@ -49,12 +51,13 @@ App.propTypes = {
 
 function mapStateToProps(state) {
     return {
-       // testClick: state.testClick,
+        // testClick: state.testClick,
         toggleHeader: state.toggleHeader
     };
 }
 
 function mapDispatchToProps(dispatch) {
+    console.log('a=======');
     return bindActionCreators(Actions, dispatch);
 }
 
