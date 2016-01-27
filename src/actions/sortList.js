@@ -5,7 +5,9 @@
  *
  */
 
-import * as types from '../constants/ActionTypes'
+import * as types from '../constants/ActionTypes';
+import fetch from 'isomorphic-fetch';
+
 
 export function toggleLeftNav() {
     console.log('toggleLeftNav======SHOW_LEFT_NAV......');

@@ -25,11 +25,7 @@ export default class App extends Component {
 
 
     render() {
-
         const { testClick,toggleLeftNav,toggleHeader} = this.props;
-
-        console.log('toggleHeader=======' + toggleHeader);
-
         return (
             <div className={classNames('container-full')}>
                 <Header clickMenuIcon={toggleLeftNav} title={"题集"}/>
@@ -57,7 +53,6 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    console.log('a=======');
     return bindActionCreators(Actions, dispatch);
 }
 
