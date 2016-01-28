@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import testClick from './testClick';
+import sortList from './sortList';
 import toggleHeader from './toggleHeader';
 
 const rootReducer = combineReducers({
- // testClick
+  sortList,
   toggleHeader
 });
 

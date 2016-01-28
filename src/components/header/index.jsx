@@ -21,8 +21,8 @@ export default class Header extends Component {
         }
     }
 
-    handleClick(e){
-        this.props.clickMenuIcon(e);
+    handleClick(e) {
+        this.props.toggleLeftNav(e);
     }
 
     render() {
@@ -50,5 +50,6 @@ export default class Header extends Component {
 }
 
 Header.propTypes = {
+    toggleLeftNav: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired
 };

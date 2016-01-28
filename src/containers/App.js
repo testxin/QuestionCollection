@@ -23,38 +23,50 @@ export default class App extends Component {
         };
     }
 
+    /**
+     * 在挂载结束之后马上被调用
+     */
     componentDidMount() {
         const { dispatch } = this.props;
-        dispatch(SortActions.getRootSortList());
+        dispatch(SortActions.fetchPostsIfNeeded());
+
+    }
+
+    /**
+     * 当一个挂载的组件接收到新的props的时候被调用
+     * @param nextProps
+     */
+    componentWillReceiveProps(nextProps) {
 
     }
 
     render() {
-        const {toggleHeader,toggleLeftNav,actions} = this.props;
-
+        const {toggleHeader,sortList,actions} = this.props;
         return (
             <div className={classNames('container-full')}>
-                <Header  clickMenuIcon={toggleLeftNav} title={"题集"}/>
+                <Header toggleLeftNav={actions.toggleLeftNav} title={"题集"}/>
                 <QuestionTitle />
                 <LeftNav open={toggleHeader.open}>
-                    <MenuItem>Menu Item</MenuItem>
-                    <MenuItem>Menu Item 2</MenuItem>
+                    {
+                        sortList.rootSortList.data.map(
+                            sortObj =>
+                                <MenuItem primaryText={sortObj.name} />
+                        )
+                    }
                 </LeftNav>
             </div>
         )
     }
 }
 
-
 App.propTypes = {
-    // testClick: PropTypes.func.isRequired,
-    toggleLeftNav: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
     return {
         // testClick: state.testClick,
+        sortList: state.sortList,
         toggleHeader: state.toggleHeader
     };
 }

@@ -7,33 +7,76 @@
 import * as types from '../constants/ActionTypes';
 import fetch from 'isomorphic-fetch';
 import  promise from 'es6-promise';
-import configureStore from '../store/configureStore'
-const store = configureStore();
-
 promise.polyfill();
 
 export function toggleLeftNav() {
     return {type: types.SHOW_LEFT_NAV}
 }
 
-export function getRootSortList() {
-    console.log('getRootSortList======init......');
-    return fetch('../api/rootSortList.json')
-        .then(function (response) {
-            if (response.status >= 400) {
-                store.dispatch(requestFail(json));
-               // throw new Error("Bad response from server");
-            }
-            return response.json();
-        })
-        .then(json => store.dispatch(requestSuccess(json)));
+
+/***
+ *
+ * @param state
+ */
+function shouldFetchPosts(state) {
+
+    return true;
 }
 
 
-export function requestSuccess(data) {
+/**
+ *
+ * 判断是否需要加载数据
+ *
+ * @returns {Function}
+ */
+export function fetchPostsIfNeeded() {
+    return (dispatch, getState) => {
+        if (shouldFetchPosts(getState())) {
+            return dispatch(getRootSortList());
+        }
+    };
+}
+
+export function getRootSortList() {
+    /*return fetch('../api/rootSortList.json')
+     .then(function (response) {
+     if (response.status >= 400) {
+     store.dispatch(requestFail(json));
+     // throw new Error("Bad response from server");
+     }
+     return response.json();
+     })
+     .then(json => store.dispatch(requestSuccess(json)));
+     */
+    return dispatch => {
+        dispatch(requestPosts());
+        return fetch('../api/rootSortList.json')
+            .then(response => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    dispatch(requestFail());
+                    var error = new Error(response.statusText)
+                    error.response = response
+                    throw error
+                }
+            })
+            .then(json => dispatch(requestSuccess(json)));
+    };
+}
+
+
+function requestPosts() {
+    return {
+        type: types.FETCH_POSTS_REQUEST
+    };
+}
+
+export function requestSuccess(rootSortList) {
     return {
         type: types.REQUEST_SUCCESS,
-        data
+        rootSortList
     }
 }
 
