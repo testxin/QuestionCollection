@@ -5,9 +5,9 @@ import ReactDom from 'react-dom';
 import classNames from 'classnames';
 import Header from '../components/header/index.jsx';
 import QuestionTitle from '../components/question/title.jsx';
-import * as Actions from '../actions/sortList';
 import LeftNav from 'material-ui/lib/left-nav';
 import MenuItem from 'material-ui/lib/menus/menu-item';
+import * as SortActions from '../actions/sortList';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
@@ -23,13 +23,19 @@ export default class App extends Component {
         };
     }
 
+    componentDidMount() {
+        const { dispatch } = this.props;
+        dispatch(SortActions.getRootSortList());
+
+    }
 
     render() {
-        const { testClick,toggleLeftNav,toggleHeader} = this.props;
+        const {toggleHeader,toggleLeftNav,actions} = this.props;
+
         return (
             <div className={classNames('container-full')}>
-                <Header clickMenuIcon={toggleLeftNav} title={"题集"}/>
-                <QuestionTitle onAddClick={text=>testClick(text)}/>
+                <Header  clickMenuIcon={toggleLeftNav} title={"题集"}/>
+                <QuestionTitle />
                 <LeftNav open={toggleHeader.open}>
                     <MenuItem>Menu Item</MenuItem>
                     <MenuItem>Menu Item 2</MenuItem>
@@ -41,8 +47,9 @@ export default class App extends Component {
 
 
 App.propTypes = {
-    testClick: PropTypes.func.isRequired,
-    toggleLeftNav: PropTypes.func.isRequired
+    // testClick: PropTypes.func.isRequired,
+    toggleLeftNav: PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -53,7 +60,10 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(Actions, dispatch);
+    return {
+        actions: bindActionCreators(SortActions, dispatch),
+        dispatch: dispatch
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

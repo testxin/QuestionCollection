@@ -4,27 +4,37 @@
  * 定义root分类和子分类的Action
  *
  */
-
 import * as types from '../constants/ActionTypes';
 import fetch from 'isomorphic-fetch';
+import  promise from 'es6-promise';
+import configureStore from '../store/configureStore'
+const store = configureStore();
 
+promise.polyfill();
 
 export function toggleLeftNav() {
-    console.log('toggleLeftNav======SHOW_LEFT_NAV......');
     return {type: types.SHOW_LEFT_NAV}
 }
 
-export function testClick() {
-    console.log('testClick======init......');
-    return {type: types.CLICK_TITLE}
+export function getRootSortList() {
+    console.log('getRootSortList======init......');
+    return fetch('../api/rootSortList.json')
+        .then(function (response) {
+            if (response.status >= 400) {
+                store.dispatch(requestFail(json));
+               // throw new Error("Bad response from server");
+            }
+            return response.json();
+        })
+        .then(json => store.dispatch(requestSuccess(json)));
 }
 
-export function requestData() {
-    return {type: types.FETCH_POSTS_REQUEST}
-}
 
-export function requestSuccess() {
-    return {type: types.REQUEST_SUCCESS}
+export function requestSuccess(data) {
+    return {
+        type: types.REQUEST_SUCCESS,
+        data
+    }
 }
 
 export function requestFail() {

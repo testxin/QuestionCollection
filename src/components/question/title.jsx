@@ -37,13 +37,13 @@ class QuestionTitle extends Component {
     handleClick(e) {
         const node = this.refs.myText;
         const text = node.innerText.trim();
-        this.props.onAddClick(text);
+      //  this.props.onAddClick(text);
     }
 
 }
 
 QuestionTitle.propTypes = {
-    onAddClick: PropTypes.func.isRequired
+  //  onAddClick: PropTypes.func.isRequired
 };
 
 export default QuestionTitle

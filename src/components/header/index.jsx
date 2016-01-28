@@ -26,7 +26,6 @@ export default class Header extends Component {
     }
 
     render() {
-       // const { toggleLeftNav} = this.props;
         return (
             <AppBar
                 title={this.props.title} className='text-center'
@@ -49,3 +48,7 @@ export default class Header extends Component {
         )
     }
 }
+
+Header.propTypes = {
+    title: PropTypes.string.isRequired
+};
