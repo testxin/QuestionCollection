@@ -5,7 +5,7 @@ import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 import { default as createHistory } from 'history/lib/createBrowserHistory';
 import rootReducer from '../reducers'
-import routers from '../routers'
+import routers from '../routes'
 import DevTools from '../containers/DevTools';
 
 

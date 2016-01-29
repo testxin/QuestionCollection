@@ -15,11 +15,15 @@ import { getRootSortList } from './actions/sortList'
 
 const store = configureStore();
 //store.dispatch(getRootSortList());
+import { reduxReactRouter, routerStateReducer, ReduxRouter } from 'redux-router';
+
+
+import routes from './routes';
 
 ReactDom.render(
     <Provider store={store}>
         <div>
-            <App />
+            <ReduxRouter routes={routes} />
             <DevTools />
         </div>
     </Provider>,
