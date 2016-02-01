@@ -7,7 +7,9 @@ var browserSyncTask = function () {
     var bsConfig = {
         server: {
             baseDir: config.tasks.browserSync.server.baseDir,
-            middleware: [historyApiFallback()]
+            middleware: [historyApiFallback({
+                verbose: true
+            })]
         }
     }
     browserSync.init(bsConfig);

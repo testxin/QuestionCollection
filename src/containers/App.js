@@ -42,6 +42,8 @@ export default class App extends Component {
 
     render() {
         const {toggleHeader,sortList,actions} = this.props;
+        console.log('render App容器')
+
         return (
             <div className={classNames('container-full')}>
                 <Header toggleLeftNav={actions.toggleLeftNav} title={"题集"}/>

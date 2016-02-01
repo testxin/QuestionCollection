@@ -12,7 +12,6 @@ import App from './containers/App'
 import DevTools from './containers/DevTools'
 import configureStore from './store/configureStore.dev'
 import { getRootSortList } from './actions/sortList'
-import SortList from './containers/SortList';
 import {ReduxRouter } from 'redux-router';
 
 const store = configureStore();
