@@ -64,10 +64,14 @@ App.propTypes = {
 };
 
 function mapStateToProps(state) {
+
+    console.log('state.router======='+JSON.stringify(state))
+
     return {
         // testClick: state.testClick,
         sortList: state.sortList,
-        toggleHeader: state.toggleHeader
+        toggleHeader: state.toggleHeader,
+        routerState: state.router
     };
 }
 

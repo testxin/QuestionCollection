@@ -7,15 +7,16 @@
 
 import React from 'react'
 import ReactDom,{ render } from 'react-dom'
-import { Provider } from 'react-redux'
+import { Provider,connect } from 'react-redux'
 import App from './containers/App'
 import DevTools from './containers/DevTools'
 import configureStore from './store/configureStore.dev'
 import { getRootSortList } from './actions/sortList'
+import SortList from './containers/SortList';
 
 const store = configureStore();
 //store.dispatch(getRootSortList());
-import { reduxReactRouter, routerStateReducer, ReduxRouter } from 'redux-router';
+import {ReduxRouter } from 'redux-router';
 
 
 import routes from './routes';
@@ -23,9 +24,9 @@ import routes from './routes';
 ReactDom.render(
     <Provider store={store}>
         <div>
-            <ReduxRouter routes={routes} />
+            <ReduxRouter routes={routes}/>
             <DevTools />
         </div>
-    </Provider>,
-    document.getElementById('app')
+    </Provider>
+    , document.getElementById('app')
 );

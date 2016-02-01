@@ -58,6 +58,8 @@ function mapStateToProps(state) {
     return {
         // testClick: state.testClick,
         sortList: state.sortList,
+        routerState: state.router
+
     };
 }
 
