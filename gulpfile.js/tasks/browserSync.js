@@ -1,9 +1,16 @@
 var browserSync = require('browser-sync')
-var config      = require('../config')
-var gulp        = require('gulp')
+var config = require('../config')
+var gulp = require('gulp')
+var historyApiFallback = require('connect-history-api-fallback');
 
-var browserSyncTask = function() {
-  browserSync.init(config.tasks.browserSync)
+var browserSyncTask = function () {
+    var bsConfig = {
+        server: {
+            baseDir: config.tasks.browserSync.server.baseDir,
+            middleware: [historyApiFallback()]
+        }
+    }
+    browserSync.init(bsConfig);
 }
-gulp.task('browserSync', browserSyncTask)
-module.exports = browserSyncTask
+gulp.task('browserSync', browserSyncTask);
+module.exports = browserSyncTask;

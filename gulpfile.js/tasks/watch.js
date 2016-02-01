@@ -7,13 +7,17 @@ var webpackConfig = require('../lib/webpack-multi-config')
 var browserSync = require('browser-sync')
 var logger = require('../lib/compileLogger')
 var watchTask = function () {
-    var watchableTasks = ['fonts', 'iconFont', 'images', 'html', 'css']
+    var watchableTasks = ['fonts', 'iconFont', 'images', 'html', 'css','api']
 
     watchableTasks.forEach(function (taskName) {
         var task = config.tasks[taskName]
+
         if (task) {
-            var glob = path.join(config.root.src, task.src, '**/*.{' + task.extensions.join(',') + '}')
+            var glob = path.join(config.root.src, task.src, '**/*.{' + task.extensions.join(',') + '}');
+
+
             watch(glob, function () {
+
                 if (taskName != 'html') {
                     require('./' + taskName)()
                 } else {
@@ -25,6 +29,7 @@ var watchTask = function () {
                         if (!initialCompile) {
                             initialCompile = true;
                             require('./htmlmin')()
+                            //require('./api')()
                         }
 
                     })

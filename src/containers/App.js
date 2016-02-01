@@ -63,10 +63,15 @@ App.propTypes = {
     dispatch: PropTypes.func.isRequired
 };
 
+
+
+/**
+ *
+ * 将属性注入到props
+ * @param state
+ * @returns {{sortList: *, toggleHeader: *,routerState:*}}
+ */
 function mapStateToProps(state) {
-
-    console.log('state.router======='+JSON.stringify(state))
-
     return {
         // testClick: state.testClick,
         sortList: state.sortList,
@@ -74,6 +79,7 @@ function mapStateToProps(state) {
         routerState: state.router
     };
 }
+
 
 function mapDispatchToProps(dispatch) {
     return {

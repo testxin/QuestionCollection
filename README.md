@@ -11,7 +11,7 @@ npm run gulp
 ##
     用于练手的demo使用了es6+webpack+gulp+redux+react+materialUI  
     src/api/为测试数据包,并没有用gulp构建,如果测试请把api拷贝到生成的public下面
-
+    <font color="red" size=7 >browser-sync需要用**'connect-history-api-fallback'**实现SPA应用映射</font>
 
 ## Browser Support
 

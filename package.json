@@ -19,7 +19,8 @@
     "test": "gulp production && karma start --single-run"
   },
   "dependencies": {
-    "babel-runtime": "^6.3.19"
+    "babel-runtime": "^6.3.19",
+    "redux-router": "^1.0.0-beta7"
   },
   "devDependencies": {
     "babel-core": "^6.4.0",
@@ -30,6 +31,7 @@
     "browser-sync": "^2.9.11",
     "classnames": "^2.2.3",
     "compression": "^1.5.1",
+    "connect-history-api-fallback": "^1.1.0",
     "css-loader": "^0.23.1",
     "del": "^2.0.2",
     "es6-promise": "^3.0.2",

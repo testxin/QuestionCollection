@@ -13,16 +13,18 @@ import DevTools from './containers/DevTools'
 import configureStore from './store/configureStore.dev'
 import { getRootSortList } from './actions/sortList'
 import SortList from './containers/SortList';
+import {ReduxRouter } from 'redux-router';
 
 const store = configureStore();
 //store.dispatch(getRootSortList());
-import {ReduxRouter } from 'redux-router';
 
 
 import routes from './routes';
 
+//tyest
+
 ReactDom.render(
-    <Provider store={store}>
+    <Provider store={store} key="provider">
         <div>
             <ReduxRouter routes={routes}/>
             <DevTools />

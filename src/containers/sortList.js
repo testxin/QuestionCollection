@@ -40,9 +40,6 @@ export default class SortList extends Component {
 
     render() {
 
-
-        console.log('come on SortList render........')
-
       //  const {toggleHeader,sortList,actions} = this.props;
         return (
            <ListComp />

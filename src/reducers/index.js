@@ -8,7 +8,6 @@ const rootReducer = combineReducers({
     sortList,
     toggleHeader,
     router: routerStateReducer
-
 });
 
 export default rootReducer;

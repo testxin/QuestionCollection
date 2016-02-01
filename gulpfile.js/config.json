@@ -5,9 +5,14 @@
   },
 
   "tasks": {
+    "api":{
+      "src": "api",
+      "dest": "api",
+      "extensions": ["json"]
+    },
     "browserSync": {
       "server": {
-        "baseDir": "public"
+        "baseDir": "./public"
       }
     },
 
@@ -44,7 +49,7 @@
       "htmlmin": {
         "collapseWhitespace": true
       },
-      "extensions": ["html", "json"]
+      "extensions": ["html"]
     },
     "htmlmin": {
       "src": "./public/js",

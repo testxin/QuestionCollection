@@ -18,7 +18,7 @@ var settings = {
 }
 
 var serverTask = function () {
-    var url = 'http://localhost:' + settings.port
+    var url = 'http://localhost:' + settings.port;
 
     express()
         .use(compress())
