@@ -9,14 +9,11 @@ import Error404 from './components/list/error-404.jsx';
 
 
 const routes = (
-    <Route path="/" component={App}>
-        <Route path="sortlist" component={SortList}>
-            <Route path="error" component={Error404}>
-
-            </Route>
-        </Route>
+    <Route component={App} name="root" path="/">
+        <IndexRoute component={SortList}/>
+        <Route component={SortList} path="/sortlist"/>
+        <Route component={Error404} path="*"/>
     </Route>
-
 
 );
 
