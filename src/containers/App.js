@@ -37,6 +37,7 @@ export default class App extends Component {
      * @param nextProps
      */
     componentWillReceiveProps(nextProps) {
+        console.log('tempProps============='+JSON.stringify(this.props.location));
 
     }
 
@@ -52,7 +53,7 @@ export default class App extends Component {
                     {
                         sortList.rootSortList.data.map(
                             sortObj =>
-                                <MenuItem primaryText={sortObj.name} />
+                                <MenuItem primaryText={sortObj.name}/>
                         )
                     }
                 </LeftNav>
@@ -64,7 +65,6 @@ export default class App extends Component {
 App.propTypes = {
     dispatch: PropTypes.func.isRequired
 };
-
 
 
 /**

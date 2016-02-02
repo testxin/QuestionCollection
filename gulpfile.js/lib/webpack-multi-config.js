@@ -11,9 +11,9 @@ var node_modules = path.resolve('./', 'node_modules');
 var Promise = require('es6-promise').Promise;
 
 var deps = [
-    'react/dist/react.min.js'
-    //'react-router/dist/react-router.min.js',
-    //'react-dom/dist/react-dom.min.js'
+    'react/dist/react.min.js',
+    'react-router/umd/ReactRouter.min.js',
+    'react-dom/dist/react-dom.min.js'
 ];
 
 
@@ -143,12 +143,7 @@ module.exports = function (env) {
 
     deps.forEach(function (dep) {
         var depPath = path.resolve(node_modules, dep);
-
-        // console.log('node_modules======='+node_modules);
-        //console.log('depPath     ======='+depPath);
-
-    //    webpackConfig.resolve.alias[dep.split(path.sep)[0]] = depPath;
-
+        //webpackConfig.resolve.alias[dep.split('/')[0]] = dep;
         webpackConfig.module.noParse.push(depPath);
     });
 

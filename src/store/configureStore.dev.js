@@ -8,7 +8,7 @@ import routes from '../routes'
 import DevTools from '../containers/DevTools';
 import { persistState } from 'redux-devtools';
 
-import { reduxReactRouter, routerStateReducer, ReduxRouter } from 'redux-router';
+//import { reduxReactRouter, routerStateReducer, ReduxRouter } from 'redux-router';
 
 
 const logger = createLogger();
@@ -18,11 +18,12 @@ const createStoreWithMiddleware = compose(
         thunk,
         logger,
         promise
-    ),
+    )/*,
     reduxReactRouter({
         routes,
         createHistory
-    }),
+    })
+    */,
     DevTools.instrument(),
     persistState(getDebugSessionKey())
 //, devTools()

@@ -8,24 +8,19 @@
 import React from 'react'
 import ReactDom,{ render } from 'react-dom'
 import { Provider,connect } from 'react-redux'
-import App from './containers/App'
+import {Router ,browserHistory} from 'react-router';
 import DevTools from './containers/DevTools'
 import configureStore from './store/configureStore.dev'
-import { getRootSortList } from './actions/sortList'
-import {ReduxRouter } from 'redux-router';
-
-const store = configureStore();
-//store.dispatch(getRootSortList());
-
-
 import routes from './routes';
 
-//tyest
+
+
+const store = configureStore();
 
 ReactDom.render(
     <Provider store={store} key="provider">
         <div>
-            <ReduxRouter routes={routes}/>
+            <Router history={browserHistory} routes={routes}/>
             <DevTools />
         </div>
     </Provider>
