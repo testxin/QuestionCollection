@@ -7,12 +7,14 @@
 
 import React from 'react'
 import ReactDom,{ render } from 'react-dom'
-import { Provider,connect } from 'react-redux'
+import { Provider } from 'react-redux'
 import {Router ,browserHistory} from 'react-router';
 import DevTools from './containers/DevTools'
 import configureStore from './store/configureStore.dev'
 import routes from './routes';
 
+
+console.log()
 
 
 const store = configureStore();

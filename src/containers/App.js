@@ -2,6 +2,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import React,{Component,PropTypes}from 'react';
 import ReactDom from 'react-dom';
+import {Link} from 'react-router';
 import classNames from 'classnames';
 import Header from '../components/header/index.jsx';
 import QuestionTitle from '../components/question/title.jsx';
@@ -37,8 +38,17 @@ export default class App extends Component {
      * @param nextProps
      */
     componentWillReceiveProps(nextProps) {
-        console.log('tempProps============='+JSON.stringify(this.props.location));
+        console.log('tempProps=============' + JSON.stringify(this.props.location));
 
+    }
+
+    handleClose() {
+
+        this.setState({
+            toggleHeader: {
+                open: false
+            }
+        });
     }
 
     render() {
@@ -53,7 +63,8 @@ export default class App extends Component {
                     {
                         sortList.rootSortList.data.map(
                             sortObj =>
-                                <MenuItem primaryText={sortObj.name}/>
+                                <MenuItem onTouchTap={(e) => this.handleClose(e)}><Link
+                                    to={{ pathname: '/sortlist', query: { id: sortObj.id } }}>{sortObj.name}</Link></MenuItem>
                         )
                     }
                 </LeftNav>
