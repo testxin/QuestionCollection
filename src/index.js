@@ -8,13 +8,18 @@
 import React from 'react'
 import ReactDom,{ render } from 'react-dom'
 import { Provider } from 'react-redux'
-import App from './containers/App'
+import { ReduxRouter } from 'redux-router';
+import DevTools from './containers/DevTools'
 import configureStore from './store/configureStore'
+import routes from './routes';
 
 const store = configureStore();
+
 ReactDom.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById('app')
+    <Provider store={store} key="provider">
+        <div>
+            <ReduxRouter routes={routes}/>
+        </div>
+    </Provider>
+    , document.getElementById('app')
 );

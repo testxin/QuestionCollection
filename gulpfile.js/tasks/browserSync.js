@@ -9,6 +9,15 @@ var browserSyncTask = function () {
             baseDir: config.tasks.browserSync.server.baseDir,
             middleware: [historyApiFallback({
                 verbose: true
+                , rewrites: [
+                    {
+                        from: /^(.*?)\/(js|css)\/(.*)$/i,
+                        to: function (context) {
+
+                            return '/'+context.match[2] + '/' + context.match[3];
+                        }
+                    }
+                ]
             })]
         }
     }

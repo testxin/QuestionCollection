@@ -17,12 +17,18 @@ export default class App extends Component {
 
     constructor(props) {
         super(props);
+
+        console.log(' window.location.hash.substr(1)===='+ window.location.hash.substr(1))
+
         this.state = {
             toggleHeader: {
                 open: false
-            }
+            },
+
+            route: window.location.hash.substr(1)
         };
     }
+
 
     /**
      * 在挂载结束之后马上被调用
@@ -42,13 +48,9 @@ export default class App extends Component {
 
     }
 
-    handleClose() {
-
-        this.setState({
-            toggleHeader: {
-                open: false
-            }
-        });
+    handleClose(e, id) {
+        const { dispatch } = this.props;
+        dispatch(SortActions.goNewRootSort(id))
     }
 
     render() {
@@ -63,12 +65,14 @@ export default class App extends Component {
                     {
                         sortList.rootSortList.data.map(
                             sortObj =>
-                                <MenuItem onTouchTap={(e) => this.handleClose(e)}><Link
-                                    to={{ pathname: '/sortlist', query: { id: sortObj.id } }}>{sortObj.name}</Link></MenuItem>
+                                <MenuItem
+                                    onTouchTap={(e,id) => this.handleClose(e,sortObj.id)}>{sortObj.name}</MenuItem>
                         )
                     }
                 </LeftNav>
+                {this.props.children}
             </div>
+
         )
     }
 }

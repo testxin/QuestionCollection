@@ -1,3 +1,11 @@
+/**
+ * Created by xinsw on 2016/1/21.
+ *
+ * 唯一的store,调试版增加logger DevTools追溯state
+ *
+ */
+
+
 import { createStore, applyMiddleware, combineReducers,compose} from 'redux'
 import thunk from 'redux-thunk'
 import promise from 'redux-promise';
@@ -8,7 +16,7 @@ import routes from '../routes'
 import DevTools from '../containers/DevTools';
 import { persistState } from 'redux-devtools';
 
-//import { reduxReactRouter, routerStateReducer, ReduxRouter } from 'redux-router';
+import { reduxReactRouter, routerStateReducer, ReduxRouter } from 'redux-router';
 
 
 const logger = createLogger();
@@ -18,12 +26,12 @@ const createStoreWithMiddleware = compose(
         thunk,
         logger,
         promise
-    )/*,
+    ),
     reduxReactRouter({
         routes,
         createHistory
     })
-    */,
+    ,
     DevTools.instrument(),
     persistState(getDebugSessionKey())
 //, devTools()
