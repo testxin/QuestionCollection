@@ -18,14 +18,10 @@ export default class App extends Component {
     constructor(props) {
         super(props);
 
-        console.log(' window.location.hash.substr(1)===='+ window.location.hash.substr(1))
-
         this.state = {
             toggleHeader: {
                 open: false
-            },
-
-            route: window.location.hash.substr(1)
+            }
         };
     }
 
@@ -44,7 +40,7 @@ export default class App extends Component {
      * @param nextProps
      */
     componentWillReceiveProps(nextProps) {
-        console.log('tempProps=============' + JSON.stringify(this.props.location));
+        //  console.log('tempProps=============' + JSON.stringify(this.props.location));
 
     }
 
@@ -55,8 +51,6 @@ export default class App extends Component {
 
     render() {
         const {toggleHeader,sortList,actions} = this.props;
-        console.log('render App容器')
-
         return (
             <div className={classNames('container-full')}>
                 <Header toggleLeftNav={actions.toggleLeftNav} title={"题集"}/>
@@ -65,7 +59,7 @@ export default class App extends Component {
                     {
                         sortList.rootSortList.data.map(
                             sortObj =>
-                                <MenuItem
+                                <MenuItem key={sortObj.id}
                                     onTouchTap={(e,id) => this.handleClose(e,sortObj.id)}>{sortObj.name}</MenuItem>
                         )
                     }

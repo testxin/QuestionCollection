@@ -11,9 +11,10 @@ var browserSyncTask = function () {
                 verbose: true
                 , rewrites: [
                     {
-                        from: /^(.*?)\/(js|css)\/(.*)$/i,
+                        from: /^(.*?)\/(js|css|json|map)\/(.*)$/i,
                         to: function (context) {
-
+                            console.log('href========'+JSON.stringify(context.parsedUrl.href));
+                            console.log('match========'+JSON.stringify(context.match));
                             return '/'+context.match[2] + '/' + context.match[3];
                         }
                     }
