@@ -28,8 +28,6 @@ var serverTask = function () {
                 {
                     from: /^(.*?)\/(js|resource|api)\/(.*)$/i,
                     to: function (context) {
-                        console.log('href========'+JSON.stringify(context.parsedUrl.href));
-                        console.log('match========'+JSON.stringify(context.match));
                         return '/'+context.match[2] + '/' + context.match[3];
                     }
                 }
