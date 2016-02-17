@@ -8,6 +8,10 @@ npm install
 npm run gulp
 ```
 
+## connect-history-api-fallback 伪静态化映射
+   需要过滤SourceMap因为他的header中没有accept导致判断进入错误
+   在回调headers下加入判断if (!req.url.toString().match(/\.map$/g)) {
+
 ##
     用于练手的demo使用了es6+webpack+gulp+redux+react+materialUI  
     src/api/为测试数据包,并没有用gulp构建,如果测试请把api拷贝到生成的public下面
