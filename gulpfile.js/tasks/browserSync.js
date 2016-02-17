@@ -11,7 +11,7 @@ var browserSyncTask = function () {
                 verbose: true
                 , rewrites: [
                     {
-                        from: /^(.*?)\/(js|css|json|map)\/(.*)$/i,
+                        from: /^(.*?)\/(js|resource|api)\/(.*)$/i,
                         to: function (context) {
                             console.log('href========'+JSON.stringify(context.parsedUrl.href));
                             console.log('match========'+JSON.stringify(context.match));
