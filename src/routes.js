@@ -12,6 +12,7 @@ import Error404 from './components/list/error-404.jsx';
 const routes = (
     <Route component={App} path="/">
         <Route component={SortList} path="/sortlist/:id"/>
+        <Route component={SortList} path="/sortlist/test/:id"/>
         <Route component={Error404} path="*"/>
     </Route>
 );
