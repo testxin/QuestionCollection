@@ -37,7 +37,6 @@ export default class SortList extends Component {
                             key={2}
                             primaryText="Sent Mail"
                             leftIcon={<ContentSend />}
-                            disabled={true}
                             nestedItems={[
                               <ListItem key={1} primaryText="Drafts" leftIcon={<ContentDrafts />} />,
                             ]}

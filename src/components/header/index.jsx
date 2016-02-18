@@ -25,6 +25,10 @@ export default class Header extends Component {
         this.props.toggleLeftNav(e);
     }
 
+    handleRightClick(e){
+
+    }
+
     render() {
         return (
             <AppBar
@@ -38,9 +42,9 @@ export default class Header extends Component {
                     targetOrigin={{horizontal: 'right', vertical: 'top'}}
                     anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                   >
-                    <MenuItem primaryText="刷新" />
-                    <MenuItem primaryText="关于" />
-                    <MenuItem primaryText="注销" />
+                    <MenuItem ref="menu0" onTouchTap={(e) => this.handleRightClick(e)} primaryText="刷新" />
+                    <MenuItem ref="menu1" onTouchTap={(e) => this.handleRightClick(e)} primaryText="关于" />
+                    <MenuItem ref="menu2" onTouchTap={(e) => this.handleRightClick(e)} primaryText="注销" />
                   </IconMenu>
                 }
             />
