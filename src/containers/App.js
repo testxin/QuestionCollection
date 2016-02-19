@@ -9,6 +9,9 @@ import QuestionTitle from '../components/question/title.jsx';
 import LeftNav from 'material-ui/lib/left-nav';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import * as SortActions from '../actions/sortList';
+import ThemeManager from 'material-ui/lib/styles/theme-manager';
+import MyRawTheme from '../components/theme/myTheme.jsx';
+
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
@@ -23,8 +26,19 @@ export default class App extends Component {
                 open: false
             }
         };
+
+
     }
 
+
+    getChildContext() {
+
+        console.log('getChildContext     ..........');
+
+        return {
+            muiTheme: ThemeManager.getMuiTheme(MyRawTheme)
+        };
+    }
 
     /**
      * 在挂载结束之后马上被调用
@@ -55,12 +69,12 @@ export default class App extends Component {
             <div className={classNames('container-full')}>
                 <Header toggleLeftNav={actions.toggleLeftNav} title={"题集"}/>
                 <QuestionTitle />
-                <LeftNav open={toggleHeader.open}>
+                <LeftNav  open={toggleHeader.open}>
                     {
                         sortList.rootSortList.data.map(
                             sortObj =>
                                 <MenuItem key={sortObj.id}
-                                    onTouchTap={(e,id) => this.handleClose(e,sortObj.id)}>{sortObj.name}</MenuItem>
+                                          onTouchTap={(e,id) => this.handleClose(e,sortObj.id)}>{sortObj.name}</MenuItem>
                         )
                     }
                 </LeftNav>
@@ -74,6 +88,11 @@ export default class App extends Component {
 App.propTypes = {
     dispatch: PropTypes.func.isRequired
 };
+
+
+App.childContextTypes = {
+    muiTheme: React.PropTypes.object
+}
 
 
 /**
