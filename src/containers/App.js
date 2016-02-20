@@ -30,10 +30,7 @@ export default class App extends Component {
 
     }
 
-
     getChildContext() {
-
-        console.log('getChildContext     ..........');
 
         return {
             muiTheme: ThemeManager.getMuiTheme(MyRawTheme)
@@ -66,7 +63,7 @@ export default class App extends Component {
     render() {
         const {toggleHeader,sortList,actions} = this.props;
         return (
-            <div className={classNames('container-full')}>
+            <div>
                 <Header toggleLeftNav={actions.toggleLeftNav} title={"题集"}/>
                 <QuestionTitle />
                 <LeftNav  open={toggleHeader.open}>

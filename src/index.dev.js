@@ -19,7 +19,7 @@ ReactDom.render(
     <Provider store={store} key="provider">
         <div>
 
-            <ReduxRouter routes={routes} />
+            <ReduxRouter routes={routes}/>
             <DevTools />
         </div>
     </Provider>
